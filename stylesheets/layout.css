@@ -38,7 +38,7 @@ article p:first-of-type {
 	margin: 55px 0 60px 0;
 
   font-family: "PT Sans", sans-serif;
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 	line-height: 1,5;
 }
 
@@ -59,14 +59,106 @@ a {
 
 body {
 	width: 700px;
-	margin-top: 68px;
+	margin-top: 50px;
 	margin-right: auto;
 	margin-bottom: 0;
 	margin-left: auto;
 }
 
-nav {
+#menu__toggle {
+  opacity: 0;
+}
+
+.menu__btn {
   position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+
+  display: flex;
+
+  width: 26px;
+  height: 26px;
+
+  cursor: pointer;
+
+  align-items: center;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  position: absolute;
+
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  background-color: #616161;
+}
+.menu__btn > span::before {
+  top: -8px;
+
+  content: '';
+}
+.menu__btn > span::after {
+  top: 8px;
+
+  content: '';
+}
+
+.menu__box {
+  position: fixed;
+  top: 0;
+  left: -100%;
+
+  display: block;
+  visibility: hidden;
+
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+
+  list-style: none;
+
+  background-color: rgba(236, 233, 240, 0.6);
+
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+
+  transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0;
+
+  visibility: visible;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  transition-duration: .25s;
+}
+.menu__box {
+  transition-duration: .25s;
+}
+.menu__item {
+  transition-duration: .25s;
+}
+
+nav {
   top: 50px;
   left: 10px;
 
@@ -120,4 +212,33 @@ nav > ul > li:hover {
 
 nav a {
   text-decoration: none;
+
+  color: rgb(0, 0, 0);
+}
+
+@media all and (max-width: 1024px) {
+  body {
+  	width: 550px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  iframe {
+    width: 540px;
+    height: 464px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body {
+    width: 450px;
+  }
+
+  iframe {
+    width: 440px;
+    height: 364px;
+  }
 }
